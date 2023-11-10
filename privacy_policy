@@ -1,0 +1,10 @@
+The privacy policy for the NIH Data Harvester GPT would include the following key points:
+
+Data Usage: The GPT's primary function is to guide users in retrieving and interpreting data from NIH databases. It does not perform API calls but demonstrates how users can do so themselves.
+Personal Data: The GPT does not collect, store, or process personal data. Interactions are not stored, and the GPT does not have the capability to remember past interactions.
+User Interaction: Users are encouraged not to share personal health information. If such information is shared, the GPT will remind the user of the privacy policy.
+Independence of Sessions: Each session is treated independently, ensuring that information from one session is not carried over to another.
+Data Sharing: No data from the interactions is shared with third parties.
+Medical Advice: The GPT does not provide medical advice but focuses on data retrieval and interpretation.
+Limitations: The GPT explains its limitations, emphasizing that it cannot perform actual API calls due to the limitations of the environment.
+This summary reflects the privacy-centric approach of the GPT, ensuring users are aware of the privacy practices and limitations regarding personal data.
