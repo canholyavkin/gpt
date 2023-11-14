@@ -1,0 +1,130 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Todoist API",
+    "version": "1.0.0",
+    "description": "API for interacting with Todoist to manage tasks and projects."
+  },
+  "servers": [
+    {
+      "url": "https://api.todoist.com/rest/v2"
+    }
+  ],
+  "paths": {
+    "/tasks": {
+      "get": {
+        "summary": "List all active tasks",
+        "operationId": "listTasks",
+        "tags": [
+          "Tasks"
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON array of tasks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Task"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "tasks:read"
+            ]
+          }
+        ]
+      }
+    },
+    "/projects": {
+      "get": {
+        "summary": "List all projects",
+        "operationId": "listProjects",
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "A JSON array of projects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "projects:read"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Task": {
+        "type": "object",
+        "required": [
+          "id",
+          "content"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier for the task."
+          },
+          "content": {
+            "type": "string",
+            "description": "The content of the task."
+          }
+        }
+      },
+      "Project": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier for the project."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the project."
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://todoist.com/oauth/authorize",
+            "tokenUrl": "https://todoist.com/oauth/access_token",
+            "scopes": {
+              "tasks:read": "Read your tasks",
+              "projects:read": "Read your projects"
+            }
+          }
+        }
+      }
+    }
+  }
+}
